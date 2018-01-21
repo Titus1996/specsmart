@@ -1,31 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns = "http://www.springframework.org/schema/beans"
-   xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" 
-   xmlns:tx = "http://www.springframework.org/schema/tx
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
    http://www.springframework.org/schema/beans/spring-beans.xsd 
    http://www.springframework.org/schema/tx
-   http://www.springframework.org/schema/tx/spring-tx.xsd ">
+   http://www.springframework.org/schema/tx/spring-tx.xsd">
    
-   <bean name="datasoure" class="org.apache.commons.dbcp2.BasicDataSource">
-   <property name="driverClassName" value="org.h2.Driver" />
-		<property name="url" value="jdbc:h2:tcp://localhost/~/test" />		
-		<property name="username" value="sa" />
-		<property name="password" value=" " />
-   </bean>
-   
-   <bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean.class ">  
-		<property name="datasource" ref="datasource"/>
+	<bean name="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+		<property name="driverClassName" value="org.h2.Driver"/>
+		<property name="url" value="jdbc:h2:tcp://localhost/~/my_eproject"/>
+		<property name="username" value="sa"/>
+		<property name="password" value=""/>
+	</bean>
+	
+	    <bean name="sessionFactory"
+		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="packagesToScan">
+		<list><value>com.specszone_mart</value></list>
+		</property>
+		
 		<property name="hibernateProperties">
 			<props>
-				<prop key="hibernate.dialect"></prop>
+				<prop key="hibernate.dialect">org.hibernate.dialect.H2Dialect</prop>
 				<prop key="hibernate.hbm2ddl.auto">update</prop>
 				<prop key="hibernate.show_sql">true</prop>
-    		</props>
+				<prop key="hibernate.format_sql">true</prop>
+			</props>
 		</property>
-		</bean>
-		
-		<bean name="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
-      <property name="sessionFactory" ref="sessionFactory" />
-   </bean>
-   <tx:annotation-driven transaction-manager="transactionManager"/>
-   </beans>
+	</bean>
+	
+<tx:annotation-driven transaction-manager="transactionManager"/>
+	<bean name="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+</beans>

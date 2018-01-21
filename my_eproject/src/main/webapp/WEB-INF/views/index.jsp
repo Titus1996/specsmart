@@ -87,6 +87,9 @@ background-color:none;
         <li><strong><a href="register">Sign Up</a></strong></li>
         <li><strong><a href="signin">Sign In</a></strong></li>
         <li><strong><a href="shop">Start Shopping</a></strong></li>
+         <li><strong><a href="registeredpage">User</a></strong></li>
+         <li><strong><a href="productform">Product</a></strong></li>
+         <li><strong><a href="category">Category</a></strong></li>
         </h4>
      </ul>
      <div class="row">

@@ -27,9 +27,4 @@ public String shop()
 return "shop";	
 }
 
-@RequestMapping(value={"/signin"})
-public String signin()
-{
-return "signin";	
-}
 }

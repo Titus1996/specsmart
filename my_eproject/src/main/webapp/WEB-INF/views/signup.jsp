@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@page isELIgnored="false" %>
+ <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
+    <%@taglib prefix="spring-form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -122,11 +125,11 @@ $(document).ready(function() {
 </head>
 <style>
 .container{
-max-width:500px;
+max-width:450px;
 }
 html,body{
 height:100%;
- background-image: url("resources/wall3.jpg"); 
+ background-image: url("resources/wall5.jpg"); 
 }
 ul{ 
 list-style-type:none;
@@ -191,6 +194,13 @@ background-color:none;
   background: #125688;
   color: white;
 }
+.gif1{
+padding-left:40px;
+
+}
+.gif2{
+padding-right:5px; 
+}
 
 </style>
 <body>
@@ -202,29 +212,42 @@ background-color:none;
         <li><strong><a href="register">Sign Up</a></strong></li>
         <li><strong><a href="signin">Sign In</a></strong></li>
         <li><strong><a href="shop">Start Shopping</a></strong></li> 
+         <li><strong><a href="registeredpage">User</a></strong></li>
+         <li><strong><a href="productform">Product</a></strong></li>
+         <li><strong><a href="category">Category</a></strong></li>
         </h4>
-     </ul>
-      <a href="https://www.facebook.com/" class="fa fa-facebook"></a>
+        <br/>
+          <a href="https://www.facebook.com/" class="fa fa-facebook"></a>
      <a href="https://twitter.com/?lang=en" class="fa fa-twitter"></a>
      <a href="https://accounts.google.com/SignUp?hl=en" class="fa fa-google"></a>
       <a href="https://www.youtube.com/" class="fa fa-youtube"></a>
       <a href="https://www.instagram.com/?hl=en" class="fa fa-instagram"></a>
       
+     </ul>
+     <div class="row">
+     <div class="col-sm-4">
+    
+          <div class="gif1">
+<img src="resources/giphy.gif" alt="loading..." style="width:400px;height:250px;"><br/><br/>
+<img src="resources/giphy1.gif" alt="loading..." style="width:400px;height:250px;">
+
+</div>
+</div>
+<div class="col-sm-4">
 <div class="container">
-
-    <form class="well form-horizontal" action="register" method="post"   modelAttribute="userForm">
-
+<c:set value="${pageContext.request.contextPath }" var="context"></c:set>
+    <spring-form:form class="well form-horizontal" action="${context}/register" method="post"   modelAttribute="user">
 <!-- Form Name -->
 <legend><center><h2><b><th><th>Registration Here</th></th></b></h2></center></legend>
 
 <!-- Text input-->
 <center>
 <div class="form-group">
-  <label class="col-md-4 control-label">First Name</label>  
+  <spring-form:label class="col-md-4 control-label" path="firstname">First Name</spring-form:label>  
   <div class="col-md-7 inputGroupContainer">
   <div class="input-group">
   <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-  <input  name="firstname" placeholder="First Name" class="form-control"  type="text">
+  <spring-form:input  name="firstname" placeholder="First Name" class="form-control"  type="text" path="firstname"></spring-form:input>
     </div>
   </div>
 </div>
@@ -232,11 +255,11 @@ background-color:none;
 <!-- Text input-->
 
 <div class="form-group">
-  <label class="col-md-4 control-label" >Last Name</label> 
+  <spring-form:label class="col-md-4 control-label" path="lastname" >Last Name</spring-form:label>
     <div class="col-md-7 inputGroupContainer">
     <div class="input-group">
   <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-  <input name="lastname" placeholder="Last Name" class="form-control"  type="text">
+  <spring-form:input name="lastname" placeholder="Last Name" class="form-control"  type="text" path="lastname"></spring-form:input>
     </div>
   </div>
 </div>
@@ -244,11 +267,11 @@ background-color:none;
 <!-- Text input-->
 
 <div class="form-group">
-  <label class="col-md-4 control-label">Username</label>  
+  <spring-form:label class="col-md-4 control-label" path="username">Username</spring-form:label>  
   <div class="col-md-7 inputGroupContainer">
   <div class="input-group">
   <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-  <input  name="username" placeholder="Username" class="form-control"  type="text">
+  <spring-form:input  name="username" placeholder="Username" class="form-control"  type="text" path="username"></spring-form:input>
     </div>
   </div>
 </div>
@@ -256,11 +279,11 @@ background-color:none;
 <!-- Text input-->
 
 <div class="form-group">
-  <label class="col-md-4 control-label" >Password</label> 
+  <spring-form:label class="col-md-4 control-label" path="password" >Password</spring-form:label> 
     <div class="col-md-7 inputGroupContainer">
     <div class="input-group">
   <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-  <input name="password" placeholder="Password" class="form-control"  type="password">
+  <spring-form:input name="password" placeholder="Password" class="form-control"  type="password" path="password"></spring-form:input>
     </div>
   </div>
 </div>
@@ -268,22 +291,22 @@ background-color:none;
 <!-- Text input-->
 
 <div class="form-group">
-  <label class="col-md-4 control-label" >Confirm Password</label> 
+  <spring-form:label class="col-md-4 control-label" path="confirmpassword">Confirm Password</spring-form:label>
     <div class="col-md-7 inputGroupContainer">
     <div class="input-group">
   <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-  <input name="confirmpassword" placeholder="Confirm Password" class="form-control"  type="password" >
+  <spring-form:input name="confirmpassword" placeholder="Confirm Password" class="form-control"  type="password" path="confirmpassword"></spring-form:input>
     </div>
   </div>
 </div>
 
 <!-- Text input-->
        <div class="form-group">
-  <label class="col-md-4 control-label">E-Mail</label>  
+  <spring-form:label class="col-md-4 control-label" path="email">E-Mail</spring-form:label>  
     <div class="col-md-7 inputGroupContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-  <input name="email" placeholder="E-Mail Address" class="form-control"  type="text">
+  <spring-form:input name="email" placeholder="E-Mail Address" class="form-control"  type="text" path="email"></spring-form:input>
     </div>
   </div>
 </div>
@@ -292,11 +315,11 @@ background-color:none;
 <!-- Text input-->
        
 <div class="form-group">
-  <label class="col-md-4 control-label">Contact No.</label>  
+  <spring-form:label class="col-md-4 control-label" path="contactno">Contact No.</spring-form:label>  
     <div class="col-md-7 inputGroupContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-  <input name="contactno" placeholder="(+91)" class="form-control" type="text" >
+  <spring-form:input name="contactno" placeholder="(+91)" class="form-control" type="text" path="contactno"></spring-form:input>
     </div>
   </div>
 </div>
@@ -319,10 +342,15 @@ background-color:none;
  <!-- reset button -->
  </label>
  </div>
-  
-  
 </center>
-</form>
+</spring-form:form>
 </div>
-</body>
+ </div>
+ <div class="col-sm-4"></div>
+      <div class="gif2">
+<img src="resources/giphy2.gif" alt="loading..." style="width:400px;height:250px;"><br/><br/>
+<img src="resources/giphy3.gif" alt="loading..." style="width:400px;height:250px;">
+</div>
+ </div>
+ </body>
 </html>

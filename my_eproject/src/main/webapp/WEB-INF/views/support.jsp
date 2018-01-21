@@ -14,7 +14,7 @@
   @import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css");
 html,body{
 height:100%;
- background-image: url("resources/walls.jpg"); 
+ background-image: url("resources/wall7.jpg"); 
 }
 ul{ 
 list-style-type:none;
@@ -79,6 +79,15 @@ background-color:none;
   background: #125688;
   color: white;
 }
+h4{
+letter-spacing:2px;
+text-align:left;
+}
+h3{
+letter-spacing:-0.5px;
+
+}
+
 </style>
 <body>
 <ul>
@@ -89,6 +98,9 @@ background-color:none;
         <li><strong><a href="register">Sign Up</a></strong></li>
         <li><strong><a href="signin">Sign In</a></strong></li>
         <li><strong><a href="shop">Start Shopping</a></strong></li>
+         <li><strong><a href="registeredpage">User</a></strong></li>
+         <li><strong><a href="productform">Product</a></strong></li>
+         <li><strong><a href="category">Category</a></strong></li>
         </h4>
      </ul>
 
@@ -119,15 +131,12 @@ background-color:none;
     <div class="row">
         <div class="col-sm-6">
             <div class="well">
-                <h3 style="line-height:20%;"><i class="fa fa-home fa-1x" style="line-height:6%;color:#339966"></i>HeadOffice Address:</h3>               
-                <p style="margin-top:6%;line-height:35%">No.7,4th street,Ramanujam street,Gandhinagar,Avadi,ch-54,Tamilnadu,India.</p>
-                <br/>
-                <h3 style="line-height:20%;"><i class="fa fa-envelope fa-1x" style="line-height:6%;color:#339966"></i> E-Mail Address:</h3>
-                <p style="margin-top:6%;line-height:35%">johnglasses@gmail.com</p>
-              
-                <h3 style="line-height:20%;"><i class="fa fa-user fa-1x" style="line-height:6%;color:#339966"></i>contact us:</h3>
-                <p style="margin-top:6%;line-height:35%">9566074532<br><br><br><br>9566473257<br><br><br><br>8764557674</p>
-                
+                <h3><i class="fa fa-home fa-1x" style="line-height:6%;color:#339966"></i><b>HeadOffice Address:</b></a></h3>               
+                <h4>No.7,4th street,Ramanujam street,Gandhinagar,Avadi,Tamilnadu,India. <br/>pin no. :600054</h4>
+                <h3><i class="fa fa-envelope fa-1x" style="line-height:6%;color:#339966"></i> <b>E-Mail Address:</b></a></h3>
+                <h4>johnglasses@gmail.com</h4>
+                <h3><i class="fa fa-user fa-1x" style="line-height:6%;color:#339966"></i><b>contact us:</b></h3>
+                <h4>9566074532<br>9566473257<br>8764557674</h4>
             </div>
         </div>
         <div class="col-sm-5">
