@@ -9,7 +9,7 @@
    
 	<bean name="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
 		<property name="driverClassName" value="org.h2.Driver"/>
-		<property name="url" value="jdbc:h2:tcp://localhost/~/my_eproject"/>
+		<property name="url" value="jdbc:h2:tcp://localhost/~/my_eproject9"/>
 		<property name="username" value="sa"/>
 		<property name="password" value=""/>
 	</bean>

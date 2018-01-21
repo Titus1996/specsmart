@@ -1,8 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+        <%@page isELIgnored="false" %>
+     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
+    <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<c:set value="${pageContext.request.contextPath }" var="context"></c:set>
+
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -25,20 +31,8 @@
 	})
  </script>
 <body>
-<ul>
-        <h4> 
-        <li><strong><a href="index">Home</a></strong></li>
-        <li><strong><a href="support">Support</a></strong></li>
-        <li><strong><a href="cart">My Cart</a></strong></li>
-        <li><strong><a href="register">Sign Up</a></strong></li>
-        <li><strong><a href="signin">Sign In</a></strong></li>
-        <li><strong><a href="shop">Start Shopping</a></strong></li> 
-         <li><strong><a href="registeredpage">User</a></strong></li>
-         <li><strong><a href="productform">Product</a></strong></li>
-         <li><strong><a href="category">Category</a></strong></li>
-        </h4>
-     </ul>
-  <div class="row">
+     <%@ include file="header.jsp"%>
+ <div class="row">
 <div class="col-sm-4">
 <div class="gift1">
 <img src="resources/giphy4.gif" alt="loading..." style="width:400px;height:250px;"><br/><br/>
@@ -52,12 +46,12 @@
 <img src="resources/giphy.gif" alt="loading..." style="width:400px;height:250px;">
 </div>
 </div>
-<form>
+
 <div class="col-sm-4">
 <br/>
 <br/>
 <br/>
- <div class="container">
+      <div class="container">
                         <div class="panel panel-default">
                             <div class="panel-heading">   
                             <br/>                             
@@ -67,45 +61,27 @@
                             </div>
                             <br/>
                             <div class="panel-body">
-                               <form action="signin" method="post" modelAttribute="user">
+                               <form action="${context}/login" method="POST">
                                     <fieldset>
-                                        <input class="form-control" placeholder="Enter Your Username" id="username" type="text"><br/>
-                                        <input class="form-control" placeholder="Enter Your Password" id="password" type="password"><br/>
-                                        <input class="btn btn-lg btn-success btn-block" type="submit" id="login" value="Login">
+                                        <input class="form-control" placeholder="Enter Your Username" name="username" type="text"><br/>
+                                        <input class="form-control" placeholder="Enter Your Password" name="password" type="password"><br/>
+                                        <input class="btn btn-lg btn-success btn-block" type="submit" id="login" value="signin">
                                     </fieldset>
-                                     </div>
                                 </form>
+                              </div>
                         </div>
-            </div>
-</form>
+      </div>
+</div>
+
+</div>
 </body>
 <style>
 html,body{
 height:100%;
  background-image: url("resources/wall7.jpg"); 
 }
-ul{ 
-list-style-type:none;
-margin:3px;
-padding:1px 2px 1px 0;
-overflow:hidden;
-}
-
-li{
-float:right;
-}
-
 li a{
-display:block;
-color:#DF15A2;
-text-align:center;
-padding:20px;
-text-decoration:darkturquoise;
-}
-
-li a:hover
-{
-background-color:none;
+color:#FFD700;
 }
  .form-signin input[type="text"] {
         margin-bottom: 5px;
@@ -132,7 +108,7 @@ background-color:none;
     }
  .img-responsive {
     display: block;
-    max-width: 100%;
+    max-width: 90%;
     height: auto;
     margin: auto;
     }

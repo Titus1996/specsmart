@@ -17,7 +17,7 @@
 <style>#success_message{ display:none;}</style>
 <script>
 $(document).ready(function() {
-    $('#contact_form').bootstrapValidator({
+    $('#form_group').bootstrapValidator({
         // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
         feedbackIcons: {
             valid: 'glyphicon glyphicon-ok',
@@ -131,68 +131,8 @@ html,body{
 height:100%;
  background-image: url("resources/wall5.jpg"); 
 }
-ul{ 
-list-style-type:none;
-margin:5px;
-padding:1px 2px 1px 0;
-overflow:hidden;
-}
-
-li{
-float:right;
-}
-
 li a{
-display:block;
-color:#1108CD;
-text-align:center;
-padding:15px;
-text-decoration:darkturquoise;
-}
-
-li a:hover
-{
-background-color:none;
-}
-
-
-.fa {
-  padding: 10px;
-  font-size: 30px;
-  width: 50px;
-  text-align: center;
-  text-decoration: none;
-  margin: -25px 10px;
-  border-radius: 50%;
-}
-
-.fa:hover {
-    opacity: 0.7;
-}
-
-.fa-facebook {
-  background: #3B5998;
-  color: white;
-}
-
-.fa-twitter {
-  background: #55ACEE;
-  color: white;
-}
-
-.fa-google {
-  background: #dd4b39;
-  color: white;
-}
-
-.fa-youtube {
-  background: #bb0000;
-  color: white;
-}
-
-.fa-instagram {
-  background: #125688;
-  color: white;
+color:#FFA500;
 }
 .gif1{
 padding-left:40px;
@@ -204,39 +144,22 @@ padding-right:5px;
 
 </style>
 <body>
-<ul>
-        <h4> 
-        <li><strong><a href="index">Home</a></strong></li>
-        <li><strong><a href="support">Support</a></strong></li>
-        <li><strong><a href="cart">My Cart</a></strong></li>
-        <li><strong><a href="register">Sign Up</a></strong></li>
-        <li><strong><a href="signin">Sign In</a></strong></li>
-        <li><strong><a href="shop">Start Shopping</a></strong></li> 
-         <li><strong><a href="registeredpage">User</a></strong></li>
-         <li><strong><a href="productform">Product</a></strong></li>
-         <li><strong><a href="category">Category</a></strong></li>
-        </h4>
-        <br/>
-          <a href="https://www.facebook.com/" class="fa fa-facebook"></a>
-     <a href="https://twitter.com/?lang=en" class="fa fa-twitter"></a>
-     <a href="https://accounts.google.com/SignUp?hl=en" class="fa fa-google"></a>
-      <a href="https://www.youtube.com/" class="fa fa-youtube"></a>
-      <a href="https://www.instagram.com/?hl=en" class="fa fa-instagram"></a>
-      
-     </ul>
+     <%@ include file="header.jsp"%>
+
+<c:set value="${pageContext.request.contextPath }" var="context"></c:set>
      <div class="row">
      <div class="col-sm-4">
     
           <div class="gif1">
-<img src="resources/giphy.gif" alt="loading..." style="width:400px;height:250px;"><br/><br/>
-<img src="resources/giphy1.gif" alt="loading..." style="width:400px;height:250px;">
+<img src="${context}/resources/giphy.gif" alt="loading..." style="width:400px;height:250px;"><br/><br/>
+<img src="${context}/resources/giphy1.gif" alt="loading..." style="width:400px;height:250px;">
 
 </div>
 </div>
 <div class="col-sm-4">
 <div class="container">
-<c:set value="${pageContext.request.contextPath }" var="context"></c:set>
-    <spring-form:form class="well form-horizontal" action="${context}/register" method="post"   modelAttribute="user">
+
+    <spring-form:form class="well form-horizontal" action="${pageContext.request.contextPath}/add" method="post"   modelAttribute="user">
 <!-- Form Name -->
 <legend><center><h2><b><th><th>Registration Here</th></th></b></h2></center></legend>
 
@@ -289,18 +212,6 @@ padding-right:5px;
 </div>
 
 <!-- Text input-->
-
-<div class="form-group">
-  <spring-form:label class="col-md-4 control-label" path="confirmpassword">Confirm Password</spring-form:label>
-    <div class="col-md-7 inputGroupContainer">
-    <div class="input-group">
-  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-  <spring-form:input name="confirmpassword" placeholder="Confirm Password" class="form-control"  type="password" path="confirmpassword"></spring-form:input>
-    </div>
-  </div>
-</div>
-
-<!-- Text input-->
        <div class="form-group">
   <spring-form:label class="col-md-4 control-label" path="email">E-Mail</spring-form:label>  
     <div class="col-md-7 inputGroupContainer">
@@ -327,7 +238,7 @@ padding-right:5px;
 <!-- Select Basic -->
 
 <!-- Success message -->
-<div class="alert alert-success"  align="center" role="alert" id="success_message">Success <i class="glyphicon glyphicon-thumbs-up"></i> Success!.</div>
+<div class="alert alert-success"  align="center" id="success_message">Success <i class="glyphicon glyphicon-thumbs-up"></i> Success!!!</div>
 
 <!--  submit Button -->
 <div class="form-group">
@@ -348,8 +259,8 @@ padding-right:5px;
  </div>
  <div class="col-sm-4"></div>
       <div class="gif2">
-<img src="resources/giphy2.gif" alt="loading..." style="width:400px;height:250px;"><br/><br/>
-<img src="resources/giphy3.gif" alt="loading..." style="width:400px;height:250px;">
+<img src="${context}/resources/giphy2.gif" alt="loading..." style="width:400px;height:250px;"><br/><br/>
+<img src="${context}/resources/giphy3.gif" alt="loading..." style="width:400px;height:250px;">
 </div>
  </div>
  </body>

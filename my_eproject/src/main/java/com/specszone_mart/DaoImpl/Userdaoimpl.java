@@ -12,13 +12,14 @@ import com.specszone_mart.model.User;
 
 
 @Transactional
-@Repository
+@Repository("userDao")
 public class Userdaoimpl implements Userdao
 {
 	@Autowired
 	SessionFactory sessionFactory;
 	 
 		public List<User> getAllUser() { // for listing all existing users
+         System.out.println("IAM IN USERDAO");
 		Session session = sessionFactory.openSession();
 		List<User>  allproduct=session.createQuery("from User",User.class).list();
 		session.close();
@@ -26,6 +27,7 @@ public class Userdaoimpl implements Userdao
 	}
 	   
 	public User getUserById(int id) { // to list a user by id
+        System.out.println("IAM IN USERDAO1");
 		Session session = sessionFactory.openSession();
 		Transaction transaction = (Transaction) session.beginTransaction();
 		User a=new User();
@@ -35,16 +37,19 @@ public class Userdaoimpl implements Userdao
 		return  a;
 
 	}
-	public void addUser(User user) {// to add a user
+	public User addUser(User user) {// to add a user
+        System.out.println("IAM IN USERDAO2");//PROBLEM OVER HERE
 		Session session = sessionFactory.openSession();
 		Transaction transaction = (Transaction) session.beginTransaction();
 		session.saveOrUpdate(user);
 		transaction.commit();
 		session.close();
+		return user;
         }
 	  
 	public void updateUser(User user) { // to update a user details
-		Session session = sessionFactory.openSession();
+        System.out.println("IAM IN USERDAO3");
+        Session session = sessionFactory.openSession();
 		Transaction transaction = session.beginTransaction();
 		session.saveOrUpdate(user);
 		transaction.commit();
@@ -52,7 +57,13 @@ public class Userdaoimpl implements Userdao
         
 		
 	}
-	
+
+
+	@Override
+	public User getUserByUsername(String username) {
+		
+		return sessionFactory.getCurrentSession().createQuery("FROM User WHERE username = '"+username+"'",User.class).getSingleResult();
+	}
 }
 
 

@@ -9,8 +9,9 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import com.specszone_mart.dao.Categorydao;
 import com.specszone_mart.model.Category;
-@Repository
+
 @Transactional
+@Repository("categoryDao")
 public class Categorydaoimpl implements Categorydao{
 	@Autowired
 	private SessionFactory sessionFactory;
@@ -36,6 +37,7 @@ public class Categorydaoimpl implements Categorydao{
 		Session session = sessionFactory.openSession();
 		Transaction transaction = session.beginTransaction();
 		Category allbyid = new Category();//c1
+		allbyid = session.get(Category.class, id);
 		transaction.commit();
 		session.close();
 		return allbyid;

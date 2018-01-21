@@ -13,13 +13,14 @@ import com.specszone_mart.dao.Productdao;
 import com.specszone_mart.model.Product;
 
 @Transactional
-@Repository
+@Repository("productdao")
 public class Productdaoimpl implements Productdao {
 	@Autowired
 	SessionFactory sessionFactory;
 
 	@Override
 	public Product addProduct(Product product) {// to add a product
+		System.out.println("ITS ME IN PRODUCT DAO");
 		Session session = sessionFactory.openSession();
 		Transaction transaction = (Transaction) session.beginTransaction();
 		session.saveOrUpdate(product);
@@ -32,6 +33,7 @@ public class Productdaoimpl implements Productdao {
 
 	@Override
 	public Product getProductById(int id) {// to get a product
+		System.out.println("ITS ME IN PRODUCT DAO1");
 		Session session = sessionFactory.openSession();
 		Transaction transaction = (Transaction) session.beginTransaction();
 		Product a1 = new Product();
@@ -44,6 +46,7 @@ public class Productdaoimpl implements Productdao {
 
 	@Override
 	public List<Product> getAllProduct() { // to list all products
+		System.out.println("ITS ME IN PRODUCT DAO2");
 		Session session = sessionFactory.openSession();
 		List<Product> b1 = session.createQuery("from Product", Product.class).list();// b1
 		session.close();
@@ -52,6 +55,7 @@ public class Productdaoimpl implements Productdao {
 
 	@Override
 	public void delete(int id) {// to delete a product
+		System.out.println("ITS ME IN PRODUCT DAO3");
 		Session session = sessionFactory.openSession();
 		Transaction transaction = (Transaction) session.beginTransaction();
 		session.delete(getProductById(id));

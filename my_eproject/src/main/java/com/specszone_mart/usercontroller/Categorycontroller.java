@@ -16,32 +16,30 @@ public class Categorycontroller {
 
 	@Autowired
 		private Categorydao categoryDao;
-		@RequestMapping("/category")
-		   public String getProductPage(Model model)
-		   {
-			model.addAttribute("category", new Category());
+	
+	@RequestMapping("/category")
+		   public String getProductPage(Model model)//for category page viewing
+		   {System.out.println("hi its to display all categories");
+		   	 model.addAttribute("category", new Category());
 			 model.addAttribute("categories",categoryDao.getAllCategory());
 			 return "category";  
 		   }
-		 @RequestMapping(value="/addCategory", method=RequestMethod.POST)
-		   public String getAddProductPage(@ModelAttribute("category")Category category)
-		   {
+		
+	 @RequestMapping(value="/addCategory", method=RequestMethod.POST)
+		   public String getAddProductPage(@ModelAttribute("category")Category category)//for adding a new category only by ADMIN
+		   {System.out.println("hi its to add a category");
 			 categoryDao.addCategory(category);
-			
 			 return "redirect:/category";
 		  }
-		   @RequestMapping(value="/editcategory/{id}")
-		   public ModelAndView editCategory(@PathVariable int id)
+		 
+	 @RequestMapping(value="/editcategory/{id}")
+		   public ModelAndView editCategory(@PathVariable Integer id)
 		   {
-		ModelAndView mv=new ModelAndView("Category");
-		mv.addObject("category",categoryDao.getCategoryById(id));
-		return mv;
+		   System.out.println("hit its to edit a category");
+		   ModelAndView mv=new ModelAndView("Category");
+		   mv.addObject("category",categoryDao.getCategoryById(id));
+		   mv.setViewName("category");
+		   return mv;
 		   }	  
-		   @RequestMapping(value="/deletecategory/{id}",method=RequestMethod.GET)
-		   public String deleteCategory(@PathVariable int id)
-			   {
-			   categoryDao.delete(id);
-			   return "redirect:/category";
-			   }
-
+	
 }

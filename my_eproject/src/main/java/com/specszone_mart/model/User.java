@@ -3,10 +3,17 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+
+import org.springframework.stereotype.Component;
+
+@Component
 @Entity
 public class User {
 @Id
-@GeneratedValue(strategy=GenerationType.SEQUENCE)
+@GeneratedValue(strategy=GenerationType.IDENTITY)
 private int id;
 public int getId() {
 	return id;
@@ -18,12 +25,21 @@ private String firstname;
 private String lastname;
 private String username;
 private String password;
-private String confirmpassword;
+@NotEmpty
+@Email
 private String email;
 private String contactno;
 private boolean enabled;
 private String role;
+@OneToOne
+/*private Cart cart;
 
+public Cart getCart() {
+	return cart;
+}
+public void setCart(Cart cart) {
+	this.cart = cart;
+}*/
 public boolean isEnabled() {
 	return enabled;
 }
@@ -49,12 +65,7 @@ public String getLastname() {
 public void setLastname(String lastname) {
 	this.lastname = lastname;
 }
-public String getConfirmpassword() {
-	return confirmpassword;
-}
-public void setConfirmpassword(String confirmpassword) {
-	this.confirmpassword = confirmpassword;
-}
+
 public String getContactno() {
 	return contactno;
 }
